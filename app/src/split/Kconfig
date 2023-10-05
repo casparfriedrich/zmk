@@ -18,6 +18,9 @@ config ZMK_SPLIT_BLE
     select BT_USER_PHY_UPDATE
     select BT_AUTO_PHY_UPDATE
 
+config ZMK_SPLIT_SERIAL
+    bool "Serial"
+
 endchoice
 
 config ZMK_SPLIT_PERIPHERAL_HID_INDICATORS
@@ -30,3 +33,4 @@ config ZMK_SPLIT_PERIPHERAL_HID_INDICATORS
 endif
 
 rsource "bluetooth/Kconfig"
+rsource "serial/Kconfig"
