@@ -20,6 +20,9 @@ config ZMK_SPLIT_BLE
 
 config ZMK_SPLIT_SERIAL
     bool "Serial"
+    select COBS
+    select CRC
+    select NET_BUF
 
 endchoice
 

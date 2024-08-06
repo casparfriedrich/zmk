@@ -108,9 +108,7 @@ static void irq_callback(const struct device *const dev, void *const user_data) 
     }
 }
 
-static int init(const struct device *dev) {
-    ARG_UNUSED(dev);
-
+static int init(void) {
     if (!device_is_ready(uart_dev)) {
         LOG_ERR("split uart device is not ready");
         return -EAGAIN;

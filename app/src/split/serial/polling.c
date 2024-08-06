@@ -21,9 +21,7 @@ void zmk_split_serial_send(const void *const data_, const size_t length) {
     }
 }
 
-static int init(const struct device *dev) {
-    ARG_UNUSED(dev);
-
+static int init(void) {
     if (!device_is_ready(uart_dev)) {
         LOG_ERR("split uart device is not ready");
         return -EAGAIN;

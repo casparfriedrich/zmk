@@ -159,7 +159,7 @@ ZMK_SUBSCRIPTION(split_listener, zmk_position_state_changed);
 ZMK_SUBSCRIPTION(split_listener, zmk_sensor_event);
 #endif /* ZMK_KEYMAP_HAS_SENSORS */
 
-static int init(const struct device *_arg) {
+static int init(void) {
     static const struct k_work_queue_config queue_config = {
         .name = "Split Peripheral Notification Queue"};
     k_work_queue_start(&service_work_q, service_q_stack, K_THREAD_STACK_SIZEOF(service_q_stack),

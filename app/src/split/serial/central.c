@@ -66,7 +66,7 @@ static void on_rx_done(struct net_buf_simple *const buf) {
                     };
                     LOG_DBG("Trigger key position state change for %d", ev.position);
 
-                    ZMK_EVENT_RAISE(new_zmk_position_state_changed(ev));
+                    raise_zmk_position_state_changed(ev);
                 }
             }
         }
