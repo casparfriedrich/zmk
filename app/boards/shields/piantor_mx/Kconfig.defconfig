@@ -1,0 +1,47 @@
+if SHIELD_PIANTOR_MX_LEFT || SHIELD_PIANTOR_MX_RIGHT
+
+config I2C
+    default y
+
+config SPI
+    default y
+
+config ZMK_DISPLAY
+    default y
+
+config ZMK_SPLIT
+    default y
+
+choice ZMK_SPLIT_TRANSPORT
+    default ZMK_SPLIT_SERIAL
+endchoice
+
+if LVGL
+
+choice LV_COLOR_DEPTH
+    default LV_COLOR_DEPTH_1
+endchoice
+
+choice ZMK_LV_FONT_DEFAULT_SMALL
+    default ZMK_LV_FONT_DEFAULT_SMALL_MONTSERRAT_26
+endchoice
+
+endif # LVGL
+
+endif # SHIELD_PIANTOR_MX_LEFT || SHIELD_PIANTOR_MX_RIGHT
+
+if SHIELD_PIANTOR_MX_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "piantor_mx"
+
+config ZMK_USB
+    default y
+
+config ZMK_USB_LOGGING
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_PIANTOR_MX_LEFT

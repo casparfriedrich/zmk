@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "piantor_mx.dtsi"
+
+/ {
+	chosen {
+		zephyr,console = &cdc_acm_uart0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		led0: led_0 {
+			gpios = <&gpio1 6 GPIO_ACTIVE_HIGH>;
+		};
+
+		led1: led_1 {
+			gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	kscan0: kscan {
+		compatible = "zmk,kscan-gpio-direct";
+		wakeup-source;
+		input-gpios = <&gpio1  2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K00 */,
+		              <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K01 */,
+		              <&gpio0  5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K02 */,
+		              <&gpio0  4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K03 */,
+		              <&gpio0 26 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K04 */,
+		              <&gpio0 27 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K05 */,
+		              <&gpio1  1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K10 */,
+		              <&gpio0 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K11 */,
+		              <&gpio0 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K12 */,
+		              <&gpio0 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K13 */,
+		              <&gpio0  7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K14 */,
+		              <&gpio0  6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K15 */,
+		              <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K20 */,
+		              <&gpio0 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K21 */,
+		              <&gpio0 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K22 */,
+		              <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K23 */,
+		              <&gpio0 21 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K24 */,
+		              <&gpio0 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K25 */,
+		              <&gpio1  3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K30 */,
+		              <&gpio1  4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K31 */,
+		              <&gpio1  5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* K32 */;
+	};
+};
+
+&i2c1 {
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+
+	gpio1: mcp23009@20 {
+		compatible = "microchip,mcp230xx";
+		reg = <0x20>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+		int-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+	};
+};

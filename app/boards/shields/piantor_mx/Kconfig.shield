@@ -1,0 +1,8 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_PIANTOR_MX_LEFT
+    def_bool $(shields_list_contains,piantor_mx_left)
+
+config SHIELD_PIANTOR_MX_RIGHT
+    def_bool $(shields_list_contains,piantor_mx_right)
