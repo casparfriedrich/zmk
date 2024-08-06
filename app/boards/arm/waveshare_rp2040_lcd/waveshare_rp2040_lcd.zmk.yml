@@ -1,0 +1,9 @@
+file_format: "1"
+id: waveshare_rp2040_lcd
+name: Waveshare RP2040-LCD
+type: board
+arch: arm
+outputs:
+  - usb
+url: https://www.waveshare.com/product/raspberry-pi/boards-kits/raspberry-pi-pico-cat/rp2040-lcd-0.96.htm
+# exposes: [pro_micro]
